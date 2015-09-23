@@ -11,6 +11,10 @@
 |
 */
 
-$app->get('/', function ()  {
-    return view('home');
+$app->get('/error', function ()  {
+    return view('error');
 });
+
+$app->get('/donate', ['uses' => 'ReportController@donationForm', 'as' => 'donation.form']);
+$app->post('/donate', ['uses' => 'ReportController@processDonation', 'as' => 'donation.handle']);
+$app->get('/', ['uses' => 'ReportController@showReport', 'as' => 'show']);

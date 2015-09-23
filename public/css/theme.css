@@ -1,15 +1,19 @@
-@import url(https://fonts.googleapis.com/css?family=Istok+Web:400,700);
+@import url(https://fonts.googleapis.com/css?family=Ek+Mukta);
 @import url(https://fonts.googleapis.com/css?family=Lora:400,400italic,700);
 
 body {
-    background: url('../img/symphony.png') repeat;
+    background: url('../img/halftone.png') repeat;
     font-family: 'Lora', serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Istok Web', sans-serif;
+    font-family: 'Ek Mukta', sans-serif;
 }
 
 .panel-report {
-    font-size: 20px;
+    font-size: 24px;
+}
+
+a, a:visited {
+    color: #ff2e2e;
 }
