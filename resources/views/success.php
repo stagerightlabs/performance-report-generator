@@ -23,13 +23,16 @@
     <div class="container">
       <div class="row">
         <div class="page-header">
+          <div class='btn-toolbar pull-right'>
+            <a class='btn btn-default btn-lg' href="/donate">Donate Again</a>
+          </div>
           <h1>Add Performance Report</h1>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <div class="alert alert-success" role="alert">
-            <strong>Success!</strong> Added <?php echo $sentenceCount; ?> sentences and <?php echo $wordCount; ?> words to the Performance Report Cauldron.
+            <strong>Success!</strong> Added <?php echo $sentenceCount; ?> sentences and <?php echo $wordCount; ?> words to the cauldron.
           </div>
         </div>
       </div>
