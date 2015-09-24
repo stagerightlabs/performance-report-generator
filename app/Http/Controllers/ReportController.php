@@ -2,14 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use Illuminate\Http\Request;
-use GuzzleHttp\Psr7\Request as GuzzleRequest;
-use GuzzleHttp\Client;
 use DB;
+use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Request as GuzzleRequest;
+use Illuminate\Http\Request;
+use App\ReportGenerator;
 
 class ReportController extends Controller
 {
+
+    public function __construct(ReportGenerator $reporter)
+    {
+        $this->reporter = $reporter;
+    }
     /**
      * Show the profile for the given user.
      *
@@ -19,22 +24,7 @@ class ReportController extends Controller
     public function showReport()
     {
         // Generate a report
-        $row = $this->fetchSentence('beginning');
-        $sentences[] = $row->text;
-        $ids[] = $row->id;
-
-        $length = rand(3,5);
-        for ($i=0; $i < $length; $i++) {
-            $row = $this->fetchSentence('middle', $ids);
-            $sentences[] = $row->text;
-            $ids[] = $row->id;
-        }
-
-        $row = $this->fetchSentence('end');
-        $sentences[] = $row->text;
-
-        // Glue the report together
-        $report = implode('. ', $sentences) . ".";
+        $report = $this->reporter->generate();
 
         return view('show', ['report' => $report]);
     }
@@ -114,11 +104,6 @@ class ReportController extends Controller
             'type' => $type,
             'word_count' => str_word_count($sentence)
         ]);
-    }
-
-    protected function fetchSentence($type, array $excluding = array())
-    {
-        return DB::table('sentences')->where('type', $type)->whereNotIn('id', $excluding)->orderByRaw('RAND()')->first();
     }
 
     protected function textFilter($sentence)

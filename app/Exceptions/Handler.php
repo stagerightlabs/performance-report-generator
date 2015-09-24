@@ -39,6 +39,10 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
+        if (app()->environment() == 'production') {
+            return view('error');
+        }
+
         return parent::render($request, $e);
     }
 }
