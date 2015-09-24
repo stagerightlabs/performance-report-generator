@@ -46,19 +46,19 @@ class ReportController extends Controller
     public function processDonation(Request $request)
     {
         // Check the ReCaptcha Field
-        // $client = new Client();
-        // $response = $client->request('POST', 'https://www.google.com/recaptcha/api/siteverify', [
-        //     'form_params' => [
-        //         'secret' => '6LdfYg0TAAAAAFsljx-eT9eC-gC-QyrOVEBVSbDg',
-        //         'response' => $request->get('g-recaptcha-response'),
-        //         'remoteip' => $request->ip()
-        //     ]
-        // ]);
-        // $result = json_decode($response->getBody()->getContents())->success;
+        $client = new Client();
+        $response = $client->request('POST', 'https://www.google.com/recaptcha/api/siteverify', [
+            'form_params' => [
+                'secret' => '6LdfYg0TAAAAAFsljx-eT9eC-gC-QyrOVEBVSbDg',
+                'response' => $request->get('g-recaptcha-response'),
+                'remoteip' => $request->ip()
+            ]
+        ]);
+        $result = json_decode($response->getBody()->getContents())->success;
 
-        // if (!$result) {
-        //     return redirect('/error');
-        // }
+        if (!$result) {
+            return redirect('/error');
+        }
 
         // Process the submitted text
         $text = e($request->get('content'));

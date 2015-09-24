@@ -23,7 +23,7 @@
     <div class="container">
       <div class="row">
         <div class="page-header">
-          <h1>Add Performance Report</h1>
+          <h1>Donate a Performance Report</h1>
         </div>
       </div>
       <div class="row">
