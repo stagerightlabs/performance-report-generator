@@ -72,6 +72,12 @@ class ReportController extends Controller
 
         // Process the submitted text
         $text = e($request->get('content'));
+
+        // Is there any content to work with?
+        if (empty($text)) {
+            return redirect('/donate');
+        }
+
         $text = $this->textFilter($text);
         $wordCount = str_word_count($text);
         $sentences = explode('.', $text);
