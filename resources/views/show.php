@@ -50,7 +50,7 @@
       </div>
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <p style="text-align: center"><small>Crafted by Ryan Durham @ <a href="http://stagerightlabs.com" target="_blank">Stage Right Labs</a>. &nbsp; Looking for a website?  <a href="https://twitter.com/stagerightlabs" target="_blank">I can help.</a></small></p>
+          <p style="text-align: center"><small>Crafted by Ryan Durham @ <a href="http://stagerightlabs.com" target="_blank">Stage Right Labs</a>. &nbsp; Looking for a website?  <a href="http://stagerightlabs.com/contact" target="_blank">I can help.</a></small></p>
         </div>
       </div>
     </div>
