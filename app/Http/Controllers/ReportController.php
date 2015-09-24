@@ -19,14 +19,19 @@ class ReportController extends Controller
     public function showReport()
     {
         // Generate a report
-        $sentences[] = DB::table('sentences')->where('type', 'beginning')->orderByRaw('RAND()')->first()->text;
+        $row = $this->fetchSentence('beginning');
+        $sentences[] = $row->text;
+        $ids[] = $row->id;
 
         $length = rand(3,5);
         for ($i=0; $i < $length; $i++) {
-            $sentences[] = DB::table('sentences')->where('type', 'middle')->orderByRaw('RAND()')->first()->text;
+            $row = $this->fetchSentence('middle', $ids);
+            $sentences[] = $row->text;
+            $ids[] = $row->id;
         }
 
-        $sentences[] = DB::table('sentences')->where('type', 'end')->orderByRaw('RAND()')->first()->text;
+        $row = $this->fetchSentence('end');
+        $sentences[] = $row->text;
 
         // Glue the report together
         $report = implode('. ', $sentences) . ".";
@@ -67,6 +72,7 @@ class ReportController extends Controller
 
         // Process the submitted text
         $text = e($request->get('content'));
+        $text = $this->textFilter($text);
         $wordCount = str_word_count($text);
         $sentences = explode('.', $text);
         $sentences = array_filter(array_map('trim',$sentences));
@@ -94,5 +100,19 @@ class ReportController extends Controller
             'type' => $type,
             'word_count' => str_word_count($sentence)
         ]);
+    }
+
+    protected function fetchSentence($type, array $excluding = array())
+    {
+        return DB::table('sentences')->where('type', $type)->whereNotIn('id', [])->orderByRaw('RAND()')->first();
+    }
+
+    protected function textFilter($sentence)
+    {
+        $filtered = str_replace('Mr.', 'Mr&#46;', $sentence);
+        $filtered = str_replace('Ms.', 'Ms&#46;', $filtered);
+        $filtered = str_replace('Mrs.', 'Mrs&#46;', $filtered);
+
+        return $filtered;
     }
 }
