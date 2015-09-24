@@ -4,6 +4,15 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Stage Managers: You will never have to write a performance report again with this handy performance report generator.">
+    <link rel="icon" type="image/png" href="http://stagerightlabs.com/user/themes/stageright/images/favicon.png">
+    <!-- Facebook Open Graph Tags -->
+    <meta property="og:title" content="Performance Report Generator"/>
+    <meta property="og:image" content="http://stagerightlabs.com/user/themes/stageright/images/favicon.png"/>
+    <meta property="og:site_name" content="Performance Report Generator"/>
+    <meta property="og:description" content="Stage Managers: You will never have to write a performance report again with this handy performance report generator."/>
+    <meta property="og:url" content="http://prg.stagerightlabs.com"/>
+
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Performance Report Generator</title>
 
