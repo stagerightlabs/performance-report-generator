@@ -104,7 +104,7 @@ class ReportController extends Controller
 
     protected function fetchSentence($type, array $excluding = array())
     {
-        return DB::table('sentences')->where('type', $type)->whereNotIn('id', [])->orderByRaw('RAND()')->first();
+        return DB::table('sentences')->where('type', $type)->whereNotIn('id', $excluding)->orderByRaw('RAND()')->first();
     }
 
     protected function textFilter($sentence)
