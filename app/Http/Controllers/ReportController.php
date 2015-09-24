@@ -78,11 +78,19 @@ class ReportController extends Controller
         $sentences = array_filter(array_map('trim',$sentences));
         $sentenceCount = count($sentences);
 
+        // Split out the sentences
+        $firstSentence = array_shift($sentences);
+        $lastSentence = array_pop($sentences);
+
         // Save the first sentence
-        $this->saveSentence(array_shift($sentences), 'beginning');
+        if ($firstSentence) {
+            $this->saveSentence($firstSentence, 'beginning');
+        }
 
         // Save the last sentence
-        $this->saveSentence(array_pop($sentences), 'end');
+        if ($lastSentence) {
+            $this->saveSentence($lastSentence, 'end');
+        }
 
         // Save the middle sentences
         foreach ($sentences as $sentence) {
