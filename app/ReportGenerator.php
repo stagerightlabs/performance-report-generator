@@ -6,7 +6,6 @@ use DB;
 
 class ReportGenerator
 {
-
     public function __construct()
     {
         $this->faker = \Faker\Factory::create();
@@ -15,10 +14,14 @@ class ReportGenerator
     public function generate()
     {
         $row = $this->fetchSentence('beginning');
+
+        if (!$row) {
+            abort(404);
+        }
         $sentences[] = $row->text;
         $ids[] = $row->id;
 
-        $length = rand(3,5);
+        $length = rand(3, 5);
         for ($i=0; $i < $length; $i++) {
             $row = $this->fetchSentence('middle', $ids);
             $sentences[] = $row->text;
@@ -45,7 +48,7 @@ class ReportGenerator
      */
     protected function fetchSentence($type, array $excluding = array())
     {
-        return DB::table('sentences')->where('type', $type)->whereNotIn('id', $excluding)->orderByRaw('RAND()')->first();
+        return DB::table('sentences')->where('type', $type)->whereNotIn('id', $excluding)->inRandomOrder()->first();
     }
 
     /**
@@ -61,13 +64,13 @@ class ReportGenerator
         // First names
         while ($pos = strpos($report, '[first-name]')) {
             $name = $this->faker->firstName();
-            $report = substr_replace($report,$name,$pos,strlen('[first-name]'));
+            $report = substr_replace($report, $name, $pos, strlen('[first-name]'));
         }
 
         // Last names
         while ($pos = strpos($report, '[last-name]')) {
             $name = $this->faker->lastName();
-            $report = substr_replace($report,$name,$pos,strlen('[last-name]'));
+            $report = substr_replace($report, $name, $pos, strlen('[last-name]'));
         }
 
         return $report;
