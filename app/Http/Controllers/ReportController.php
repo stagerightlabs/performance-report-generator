@@ -10,7 +10,6 @@ use App\ReportGenerator;
 
 class ReportController extends Controller
 {
-
     public function __construct(ReportGenerator $reporter)
     {
         $this->reporter = $reporter;
@@ -71,7 +70,7 @@ class ReportController extends Controller
         $text = $this->textFilter($text);
         $wordCount = str_word_count($text);
         $sentences = explode('.', $text);
-        $sentences = array_filter(array_map('trim',$sentences));
+        $sentences = array_filter(array_map('trim', $sentences));
         $sentenceCount = count($sentences);
 
         // Split out the sentences
@@ -94,7 +93,6 @@ class ReportController extends Controller
         }
 
         return view('success', ['wordCount' => $wordCount, 'sentenceCount' => $sentenceCount]);
-
     }
 
     protected function saveSentence($sentence, $type)

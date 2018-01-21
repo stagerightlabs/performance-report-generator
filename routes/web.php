@@ -9,12 +9,12 @@
 | It is a breeze. Simply tell Lumen the URIs it should respond to
 | and give it the Closure to call when that URI is requested.
 |
-*/
+ */
 
-$app->get('/error', function ()  {
+$router->get('/error', function () {
     return view('error');
 });
 
-$app->get('/donate', ['uses' => 'ReportController@donationForm', 'as' => 'donation.form']);
-$app->post('/donate', ['uses' => 'ReportController@processDonation', 'as' => 'donation.handle']);
-$app->get('/', ['uses' => 'ReportController@showReport', 'as' => 'show']);
+$router->get('/donate', ['uses' => 'ReportController@donationForm', 'as' => 'donation.form']);
+$router->post('/donate', ['uses' => 'ReportController@processDonation', 'as' => 'donation.handle']);
+$router->get('/', ['uses' => 'ReportController@showReport', 'as' => 'show']);
