@@ -38,7 +38,6 @@
               <div class="g-recaptcha" data-sitekey="6LdfYg0TAAAAAPaopGQHhRc0KfGiLXqm9lO0vMJv"></div>
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
-            <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
           </form>
       </div>
       <div class="row">
