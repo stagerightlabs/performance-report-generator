@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use DB;
 use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Request as GuzzleRequest;
-use Illuminate\Http\Request;
 use App\ReportGenerator;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ReportController extends Controller
 {
@@ -15,7 +14,7 @@ class ReportController extends Controller
         $this->reporter = $reporter;
     }
     /**
-     * Show the profile for the given user.
+     * Show a generated performance report.
      *
      * @param  int  $id
      * @return Response
@@ -30,6 +29,7 @@ class ReportController extends Controller
 
     /**
      * Show the donation form
+     *
      * @return Response
      */
     public function donationForm()
@@ -38,7 +38,8 @@ class ReportController extends Controller
     }
 
     /**
-     * Handle the submission of the donation form
+     * Handle the submission of a donation
+     *
      * @param  Request $request
      * @return Response
      */
@@ -48,7 +49,7 @@ class ReportController extends Controller
         $client = new Client();
         $response = $client->request('POST', 'https://www.google.com/recaptcha/api/siteverify', [
             'form_params' => [
-                'secret' => '6LdfYg0TAAAAAFsljx-eT9eC-gC-QyrOVEBVSbDg',
+                'secret' => env('RECAPTCHA_KEY'),
                 'response' => $request->get('g-recaptcha-response'),
                 'remoteip' => $request->ip()
             ]
