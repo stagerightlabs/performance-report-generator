@@ -5,10 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Stage Managers: You will never have to write a performance report again with this handy performance report generator.">
-    <link rel="icon" type="image/png" href="http://stagerightlabs.com/user/themes/stageright/images/favicon.png">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icon/favicon-16x16.png">
+    <link rel="manifest" href="icon/site.webmanifest">
+
     <!-- Facebook Open Graph Tags -->
     <meta property="og:title" content="Performance Report Generator"/>
-    <meta property="og:image" content="http://stagerightlabs.com/user/themes/stageright/images/favicon.png"/>
+    <meta property="og:image" content="icon/apple-touch-icon.png"/>
     <meta property="og:site_name" content="Performance Report Generator"/>
     <meta property="og:description" content="Stage Managers: You will never have to write a performance report again with this handy performance report generator."/>
     <meta property="og:url" content="http://prg.stagerightlabs.com"/>
