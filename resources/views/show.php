@@ -26,6 +26,13 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <!-- Umami -->
+    <script async defer
+        data-website-id="12087a60-39b0-4639-bbcb-5e0cd0529f4f"
+        src="https://umami.stagerightlabs.com/umami.js"
+        data-do-not-track="true"
+    ></script>
   </head>
   <body>
     <div class="container">
@@ -54,7 +61,7 @@
             <small>
             Crafted by Ryan Durham @ <a href="http://stagerightlabs.com" target="_blank">Stage Right Labs</a>.
             </small>
-        </p>
+          </p>
         </div>
       </div>
     </div>
