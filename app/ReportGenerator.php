@@ -3,12 +3,13 @@
 namespace app;
 
 use DB;
+use Faker\Factory;
 
 class ReportGenerator
 {
     public function __construct()
     {
-        $this->faker = \Faker\Factory::create();
+        $this->faker = Factory::create();
     }
 
     public function generate()
@@ -22,7 +23,7 @@ class ReportGenerator
         $ids[] = $row->id;
 
         $length = rand(3, 5);
-        for ($i=0; $i < $length; $i++) {
+        for ($i = 0; $i < $length; $i++) {
             $row = $this->fetchSentence('middle', $ids);
             $sentences[] = $row->text;
             $ids[] = $row->id;
@@ -48,7 +49,7 @@ class ReportGenerator
      */
     protected function fetchSentence($type, array $excluding = array())
     {
-        return DB::table('sentences')->where('type', $type)->whereNotIn('id', $excluding)->inRandomOrder()->first();
+        return \DB::table('sentences')->where('type', $type)->whereNotIn('id', $excluding)->inRandomOrder()->first();
     }
 
     /**
