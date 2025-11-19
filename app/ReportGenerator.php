@@ -2,16 +2,25 @@
 
 namespace app;
 
-use DB;
 use Faker\Factory;
+use Faker\Generator;
+use Illuminate\Support\Facades\DB;
 
 class ReportGenerator
 {
+    protected Generator $faker;
+
+    /**
+     * Create a new report generator.
+     */
     public function __construct()
     {
         $this->faker = Factory::create();
     }
 
+    /**
+     * Generate a report.
+     */
     public function generate()
     {
         $row = $this->fetchSentence('beginning');
@@ -49,7 +58,11 @@ class ReportGenerator
      */
     protected function fetchSentence($type, array $excluding = array())
     {
-        return \DB::table('sentences')->where('type', $type)->whereNotIn('id', $excluding)->inRandomOrder()->first();
+        return DB::table('sentences')
+            ->where('type', $type)
+            ->whereNotIn('id', $excluding)
+            ->inRandomOrder()
+            ->first();
     }
 
     /**
