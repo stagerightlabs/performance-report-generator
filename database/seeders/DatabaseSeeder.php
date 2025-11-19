@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Database\Seeders\SentenceSeeder;
 use Illuminate\Database\Seeder;
 
